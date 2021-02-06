@@ -3,9 +3,9 @@
 from flask import Flask, request, render_template
 from rq import Queue
 from rq.job import Job
-from worker import conn
+# from worker import conn
 
-q = Queue(connection=conn)
+# q = Queue(connection=conn)
 app = Flask(__name__)
 
 
@@ -74,6 +74,8 @@ def me_api():
         "theme": "png",
         "image": "",
     }
+
+print '====================================== __name__ ', __name__
 
 
 if __name__ == '__main__':
