@@ -3,15 +3,15 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
-from src.bp.auth import login_required
-from src.db_postgres import get_db
+from bp.auth import login_required
+from db_postgres import get_db
 
 bp = Blueprint('blog', __name__)
 
 
 @bp.route('/')
 def index():
-    from src.rabbitmq.fpika import Pika
+    from rabbitmq.fpika import Pika
     fpika = Pika(g)
     ch = fpika.channel();
     ch.basic_publish(exchange='',routing_key='queue3',body='message')

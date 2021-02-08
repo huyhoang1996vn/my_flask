@@ -36,39 +36,39 @@ def teardown_request(exception):
 
 @app.before_request
 def before_request():
-    from src import db_postgres
+    import db_postgres
     g.db = db_postgres.connect_db().getconn()
 
 
 # from . import db_postgres
 # db_postgres.init_app(app)
 
-from src.bp import auth, blog
+from bp import auth, blog
 app.register_blueprint(auth.bp)
 app.register_blueprint(blog.bp)
     
 
 app.add_url_rule('/', endpoint='index')
 
-from src.rabbitmq.fpika import Pika
-fpika = Pika(app)
+# from rabbitmq.fpika import Pika
+# fpika = Pika(app)
 
-ch = fpika.channel();
-ch.queue_declare(queue='queue5')
-ch.queue_declare(queue='queue6')
+# ch = fpika.channel();
+# ch.queue_declare(queue='queue5')
+# ch.queue_declare(queue='queue6')
 
-def callback(ch, method, properties, body):
-    print(" [x] Received %r" % body)
+# def callback(ch, method, properties, body):
+#     print(" [x] Received %r" % body)
 
-ch.basic_consume(queue='queue5', on_message_callback=callback, auto_ack=True)
-ch.basic_consume(queue='queue6', on_message_callback=callback, auto_ack=True)
+# ch.basic_consume(queue='queue5', on_message_callback=callback, auto_ack=True)
+# ch.basic_consume(queue='queue6', on_message_callback=callback, auto_ack=True)
 
 
 # if __name__ == '__main__':
 #   print '========================= in file app ', __name__
 
 #     app.run()
-ch.start_consuming()
+# ch.start_consuming()
 
 # from threading import Thread
 # thread = Thread(ch.start_consuming())
