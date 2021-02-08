@@ -2,12 +2,15 @@ from app import app
 from queue import ch
 import threading
 
-
-
-print '========================= in file run ', __name__
+def run_app():
+	app.run('localhost', 5000, True, use_reloader=False)
 
 if __name__ == '__main__':
-	# app.run('localhost', 7002, True)
-	# ch.start_consuming()
-    threading.Thread(target=app.run).start()
-    threading.Thread(target=ch.start_consuming).start()
+    print '========================'
+    th1 = threading.Thread(target=ch.start_consuming)
+    th1.start()
+
+    th2 = threading.Thread(target=run_app)
+    th2.start()
+
+# To quit Ctrl + \

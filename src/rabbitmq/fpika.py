@@ -15,7 +15,7 @@ except NameError as e:
     xrange = range
 
 FLASK_PIKA_PARAMS = {
-    'host':'192.168.1.4',      #amqp.server.com
+    'host':'172.16.24.104',      #amqp.server.com
     'username': 'admin',  #convenience param for username
     'password': 'admin',  #convenience param for password
     'port': 5672,            #amqp server port
@@ -41,7 +41,6 @@ class Pika(object):
 
 
     def init_app(self, app):
-        print '======================= Pika'
         """
             Initialize the Flask Pika extension
         """

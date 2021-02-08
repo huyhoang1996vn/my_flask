@@ -14,7 +14,7 @@ def index():
     from rabbitmq.fpika import Pika
     fpika = Pika(g)
     ch = fpika.channel();
-    ch.basic_publish(exchange='',routing_key='queue3',body='message')
+    ch.basic_publish(exchange='',routing_key='queue2',body='message')
     fpika.return_channel(ch);
     # posts = db.execute(
     #     '''SELECT p.id, title, body, created, author_id, username FROM post p JOIN user u ON p.author_id = u.id ORDER BY created DESC'''
