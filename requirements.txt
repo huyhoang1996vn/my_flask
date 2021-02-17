@@ -2,3 +2,4 @@ flask
 rq
 psycopg2-binary
 pike
+sqlalchemy

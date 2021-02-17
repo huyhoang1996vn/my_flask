@@ -15,7 +15,7 @@ except NameError as e:
     xrange = range
 
 FLASK_PIKA_PARAMS = {
-    'host':'192.168.1.4',      #amqp.server.com
+    'host':'127.0.0.1',      #amqp.server.com
     'username': 'admin',  #convenience param for username
     'password': 'admin',  #convenience param for password
     'port': 5672,            #amqp server port

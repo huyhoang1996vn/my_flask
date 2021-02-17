@@ -45,7 +45,7 @@ def init_db_command():
 def connect_db():
     return psycopg2.pool.SimpleConnectionPool(1, 20,user = "postgres",
                                                   password = "postgres",
-                                                  host = "172.16.24.104",
+                                                  host = "192.168.0.11",
                                                   port = "5444",
                                                   database = "flask")
 

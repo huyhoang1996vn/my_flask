@@ -13,4 +13,3 @@ def callback(ch, method, properties, body):
 
 ch.basic_consume(queue='queue5', on_message_callback=callback, auto_ack=True)
 ch.basic_consume(queue='queue6', on_message_callback=callback, auto_ack=True)
-# ch.start_consuming()
