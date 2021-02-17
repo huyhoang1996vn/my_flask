@@ -41,7 +41,6 @@ class Pika(object):
 
 
     def init_app(self, app):
-        print '======================= Pika'
         """
             Initialize the Flask Pika extension
         """

@@ -2,8 +2,6 @@
 # from queue import ch
 # import threading
 
-
-
 # print '========================= in file run ', __name__
 
 # def fun_app():
@@ -55,4 +53,5 @@ api.add_resource(HelloWorld, '/', '/<string:todo_id>')
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 

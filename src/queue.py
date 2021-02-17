@@ -5,8 +5,8 @@ from app import app
 fpika = Pika(app)
 
 ch = fpika.channel();
-ch.queue_declare(queue='queue5')
-ch.queue_declare(queue='queue6')
+ch.queue_declare(queue='queue1')
+ch.queue_declare(queue='queue2')
 
 def callback(ch, method, properties, body):
     print(" [x] Received %r" % body)
