@@ -1,5 +1,6 @@
 flask
 rq
-psycopg2-binary
-pike
+pika
 sqlalchemy
+flask_restful
+enum
