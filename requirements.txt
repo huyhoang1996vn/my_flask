@@ -1,6 +1,7 @@
 flask
 rq
 pika
+psycopg2
 sqlalchemy
 flask_restful
 enum
