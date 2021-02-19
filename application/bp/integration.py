@@ -6,7 +6,6 @@ from flask import (
 from application.database import Integration
 from application.db_engine import  execute_db
 
-
 bp = Blueprint('blog', __name__)
 
 
@@ -15,7 +14,7 @@ def index():
     from application.rabbitmq.fpika import Pika
     fpika = Pika(g)
     ch = fpika.channel();
-    ch.basic_publish(exchange='',routing_key='queue3',body='message')
+    ch.basic_publish(exchange='',routing_key='queue7',body='Integration')
     fpika.return_channel(ch);
     # execute_db(users.insert(), username='admin', password='admin@localhost')
     posts = execute_db(Integration.select())

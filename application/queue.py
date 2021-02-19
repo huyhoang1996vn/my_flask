@@ -1,8 +1,8 @@
 
 from rabbitmq.fpika import Pika
-from app import app
+# from app import app
 
-fpika = Pika(app)
+fpika = Pika()
 
 ch = fpika.channel();
 ch.queue_declare(queue='queue1')

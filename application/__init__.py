@@ -23,6 +23,7 @@ def create_app():
     def before_request():
         g.db = db_engine.connect_engine()
 
+
     with app.app_context():
         # Include our Routes
         # from . import routes
