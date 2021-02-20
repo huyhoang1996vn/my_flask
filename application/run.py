@@ -57,43 +57,40 @@
 # https://pika.readthedocs.io/en/stable/examples.html
 import pika
 import time
+import pika, sys, os
+from services import subcriber
+def main():
+    sleepTime = 10
+    print(' [*] Sleeping for ', sleepTime, ' seconds.')
+    # time.sleep(30)
 
-sleepTime = 10
-print(' [*] Sleeping for ', sleepTime, ' seconds.')
-time.sleep(30)
+    print(' [*] Connecting to server ...')
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='127.0.0.1'))
+    channel = connection.channel()
+    channel.queue_declare(queue='queue7', durable=True)
+    channel.queue_declare(queue='queue8', durable=True)
 
-print(' [*] Connecting to server ...')
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='127.0.0.1'))
-channel = connection.channel()
-channel.queue_declare(queue='queue7', durable=True)
-
-print(' [*] Waiting for messages.')
-
-
-def callback(ch, method, properties, body):
-    print(" [x] Received %s" % body)
-    cmd = body.decode()
-
-    if cmd == 'hey':
-        print("hey there")
-    elif cmd == 'hello':
-        print("well hello there")
-    else:
-        print("sorry i did not understand ", body)
-
-    print(" [x] Done")
-
-    ch.basic_ack(delivery_tag=method.delivery_tag)
+    print(' [*] Waiting for messages.')
 
 
-channel.basic_qos(prefetch_count=1)
-channel.basic_consume(queue='queue7', on_message_callback=callback)
-channel.start_consuming()
+
+    channel.basic_qos(prefetch_count=1)
+    channel.basic_consume(queue='queue7', on_message_callback=subcriber.callback2)
+    channel.basic_consume(queue='queue8', on_message_callback=subcriber.callback)
+    channel.start_consuming()
 
   # app.run('localhost', 7002, True)
   # ch.start_consuming()
 
-
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        print('Interrupted')
+        try:
+            sys.exit(0)
+        except SystemExit:
+            os._exit(0)
 
 
 
