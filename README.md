@@ -17,7 +17,7 @@ sudo apt install python3-pip
 pip3 install -r requirements.txt 
 ```
 
-### Install requirements
+### Run application (DEV)
 ```sh
 export FLASK_APP=application
 export FLASK_ENV=development
