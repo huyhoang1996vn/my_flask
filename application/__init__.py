@@ -1,9 +1,9 @@
 from flask import Flask
-import db_engine
-from bp.integration import bp
+from . import db_engine
+from .bp.integration import bp
 from flask import current_app, g
 from flask_restful import Api
-from api.routes import initialize_routes
+from .api.routes import initialize_routes
 
 
 

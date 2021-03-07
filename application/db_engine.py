@@ -31,7 +31,7 @@ def init_db_command():
     click.echo('Initialized the database.')    
 
 def init_app(app):
-    print '==== init app'
+    print ('==== init app')
     #     print '==== init app'
 #     app.db = connect_engine().connect()
     # app.config['postgreSQL_pool'] = connect_db()

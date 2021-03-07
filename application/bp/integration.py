@@ -11,7 +11,7 @@ bp = Blueprint('blog', __name__)
 
 @bp.route('/')
 def index():
-    print '============== Integration '
+    print ('============== Integration ')
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='127.0.0.1'))
     channel = connection.channel()
     message = "info: Hello World!"
