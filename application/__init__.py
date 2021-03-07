@@ -14,14 +14,13 @@ from .api.routes import initialize_routes
 def create_app():
     """Initialize the core application."""
     app = Flask(__name__, instance_relative_config=False)
-    # app.config.from_object('config.Config')
-
+    app.config.from_object('application.config.DevelopmentConfig')
     # Initialize Plugins
     db_engine.init_app(app)
     # r.init_app(app)
     @app.before_request
     def before_request():
-        g.db = db_engine.connect_engine()
+        g.db = db_engine.connect_engine(app.config['DATABASE_URI'])
 
 
     with app.app_context():

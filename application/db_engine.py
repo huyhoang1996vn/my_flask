@@ -6,8 +6,8 @@ from flask.cli import with_appcontext
 
 engine = create_engine('postgresql+psycopg2://postgres:postgres@127.0.0.1:5444/flask')
 
-def connect_engine():
-	return create_engine('postgresql+psycopg2://postgres:postgres@127.0.0.1:5444/flask', echo=True)
+def connect_engine(DATABASE_URI):
+	return create_engine(DATABASE_URI, echo=True)
 
 def connect_db():
 	g.db = db_engine.connect_engine().connect()

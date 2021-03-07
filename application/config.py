@@ -1,14 +1,14 @@
 
 
 class Config(object):
-    DEBUG = False
-    DATABASE_URI = 'sqlite://:memory:'
+    DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@127.0.0.1:5444/flask'
 
 class ProductionConfig(Config):
-    DATABASE_URI = 'mysql://user@localhost/foo'
+    DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@127.0.0.1:5444/flask'
 
 class DevelopmentConfig(Config):
-    DEBUG = False
+    DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@127.0.0.1:5444/flask'
+    HOST_RABBIT = '127.0.0.1'
 
 class TestingConfig(Config):
     TESTING = True
