@@ -23,3 +23,8 @@ export FLASK_APP=application
 export FLASK_ENV=development
 flask run --host=0.0.0.0 --port=5001
 ```
+
+### Run consumer on another process(DEV)
+```sh
+python run_consumer.py
+```
