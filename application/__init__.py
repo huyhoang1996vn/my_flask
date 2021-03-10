@@ -1,14 +1,9 @@
 from flask import Flask
 from . import db_engine
-from .bp.integration import bp
+from .blueprint.integration import bp
 from flask import current_app, g
 from flask_restful import Api
 from .api.routes import initialize_routes
-
-
-
-# Globally accessible libraries
-# db = SQLAlchemy()
 
 
 def create_app():
@@ -22,11 +17,7 @@ def create_app():
     def before_request():
         g.db = db_engine.connect_engine(app.config['DATABASE_URI'])
 
-
     with app.app_context():
-        # Include our Routes
-        # from . import routes
-
         # Register Blueprints
         app.register_blueprint(bp)
         # Init api
