@@ -22,14 +22,7 @@ def index():
     print(" [x] Sent 'Hello World!'")
     connection.close()
 
-
-    # from application.rabbitmq.fpika import Pika
-    # fpika = Pika(g)
-    # ch = fpika.channel();
-    # ch.basic_publish(exchange='',routing_key='queue7',body='delay')
-    # ch.basic_publish(exchange='',routing_key='queue8',body='Integration')
-
     # fpika.return_channel(ch);
     # execute_db(users.insert(), username='admin', password='admin@localhost')
     posts = execute_db(Integration.select())
-    return render_template('blog/index.html', posts=posts)
+    return render_template('index.html', posts=posts)
