@@ -38,6 +38,6 @@ def callback2(ch, method, properties, body):
         print(" [x] Done ", body1)
 
         ch.basic_ack(delivery_tag=method.delivery_tag)
-    except Exception, e:
+    except Exception as e:
         print(" [x] Done in error ", e)
         ch.basic_ack(delivery_tag=method.delivery_tag)

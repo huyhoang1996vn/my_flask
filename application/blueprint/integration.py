@@ -5,14 +5,15 @@ from flask import (
 # from bp.auth import login_required
 from application.database import Integration
 from application.db_engine import  execute_db
+from flask import current_app
 import pika
 bp = Blueprint('blog', __name__)
 
 
 @bp.route('/')
 def index():
-    print ('============== Integration ')
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='127.0.0.1'))
+    print ('============== Integration ', current_app.config["HOST_RABBIT"])
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=current_app.config["HOST_RABBIT"]))
     channel = connection.channel()
     message = "info: Hello World!"
     channel.basic_publish(exchange='', routing_key='queue7', body=message)

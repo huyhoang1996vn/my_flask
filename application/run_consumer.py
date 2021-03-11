@@ -3,12 +3,15 @@ import pika
 import time
 import pika, sys, os
 from services import subcriber
+
+HOST_RABBIT = '127.0.0.1'
+
 def main():
     sleepTime = 10
     print(' [*] Sleeping for ', sleepTime, ' seconds.')
 
     print(' [*] Connecting to server ...')
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='127.0.0.1'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=HOST_RABBIT))
     channel = connection.channel()
     channel.queue_declare(queue='queue7', durable=True)
     channel.queue_declare(queue='queue8', durable=True)
