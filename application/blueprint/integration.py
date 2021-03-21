@@ -1,3 +1,4 @@
+# https://flask.palletsprojects.com/en/1.1.x/
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
 )
@@ -23,7 +24,6 @@ def index():
     print(" [x] Sent 'Hello World!'")
     connection.close()
 
-    # fpika.return_channel(ch);
     # execute_db(users.insert(), username='admin', password='admin@localhost')
     posts = execute_db(Integration.select())
     return render_template('index.html', posts=posts)
