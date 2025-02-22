@@ -4,7 +4,7 @@ from flask import current_app, g
 import click
 from flask.cli import with_appcontext
 
-engine = create_engine('postgresql+psycopg2://postgres:postgres@127.0.0.1:5444/flask')
+engine = create_engine('postgresql+psycopg2://postgres:postgres@127.0.0.1:5432/flask')
 
 def connect_engine(DATABASE_URI):
 	return create_engine(DATABASE_URI, echo=True, pool_size=20, max_overflow=0)
@@ -25,11 +25,14 @@ def execute_string(command):
 
 def init_db():
     with engine.connect() as con:
-        file = open("application/sql/init.sql")
+        file = open("application/migration/init.sql")
         query = text(file.read())
-        con.execute(query)
+        try:
+            con.execute(query)
+        except Exception as e:
+            print("Exception: ",e)
 
-@click.command('migrate')
+@click.command('migratedb')
 @with_appcontext
 def init_db_command():
     init_db()

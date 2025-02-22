@@ -4,7 +4,7 @@ from flask import (
 )
 
 # from bp.auth import login_required
-from application.database import Integration
+# from application.database import Integration
 from application.db_engine import  execute_db
 from flask import current_app
 import pika
@@ -25,5 +25,7 @@ def index():
     connection.close()
 
     # execute_db(users.insert(), username='admin', password='admin@localhost')
-    posts = execute_db(Integration.select())
-    return render_template('index.html', posts=posts)
+    # posts = execute_db(Integration.select())
+    # return render_template('index.html', posts=posts)
+    return render_template('index.html')
+
